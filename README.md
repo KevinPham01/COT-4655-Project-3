@@ -20,5 +20,5 @@ This app allows users to take photos using the back camera or select photos from
 * Displaying user comments and metadata like time and location.
 * Handling notifications in iOS for daily reminders.
 
-![COP5930-005Project3-ezgif com-optimize](https://github.com/user-attachments/assets/d15c140d-9f03-4888-9f9a-0440cdacfe3e)
 
+![COP5930-005Project3-ezgif com-optimize](https://github.com/user-attachments/assets/c3e604bd-2e29-4314-b0aa-e4f47e9657b5)
