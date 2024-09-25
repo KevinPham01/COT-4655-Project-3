@@ -1,5 +1,6 @@
-# ios102-lab6-spring23
+# ios102-Project 3-Fall24
 
-TODO// Update README with new lab 6 gif
 
-![instaparse_walkthrough_1_xtra_small](https://user-images.githubusercontent.com/11927517/199710313-700aef85-ba89-427c-aa07-f89f0fdfdbbe.gif)
+
+![COP5930-005Project3-ezgif com-optimize](https://github.com/user-attachments/assets/d15c140d-9f03-4888-9f9a-0440cdacfe3e)
+
