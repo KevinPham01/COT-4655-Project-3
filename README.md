@@ -12,7 +12,7 @@ This app allows users to take photos using the back camera or select photos from
 * Display posts from the last 24 hours based on the user's last upload.
 * Posts within 24 hours are shown, others are hidden or blurred.
 * Push notification reminder to post a photo daily.
-* 
+  
 ## What I Learned
 * Implementing UIImagePickerController for camera and photo album access.
 * Managing backend data with Parse-Swift framework.
