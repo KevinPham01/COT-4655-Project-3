@@ -1,3 +1,10 @@
+//
+//  SceneDelegate.swift
+//  lab-insta-parse
+//
+//  Created by Charlie Hieger on 10/29/22.
+//
+
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -10,13 +17,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        // Enforce Dark Mode for the entire app
-        window?.overrideUserInterfaceStyle = .dark
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        // Use this method to optionally configure and attach the UIWindow window to the provided UIWindowScene scene.
+        // If using a storyboard, the window property will automatically be initialized and attached to the scene.
+        // This delegate does not imply the connecting scene or session are new (see application:configurationForConnectingSceneSession instead).
+        guard let _ = (scene as? UIWindowScene) else { return }
 
         NotificationCenter.default.addObserver(forName: Notification.Name("login"), object: nil, queue: OperationQueue.main) { [weak self] _ in
             self?.login()
@@ -30,6 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if User.current != nil {
             login()
         }
+
     }
 
     private func login() {
@@ -41,12 +48,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // TODO: Pt 1 - Log out Parse user.
         // This will also remove the session from the Keychain, log out of linked services and all future calls to current will return nil.
         User.logout { [weak self] result in
+
             switch result {
             case .success:
+
                 // Make sure UI updates are done on main thread when initiated from background thread.
                 DispatchQueue.main.async {
+
+                    // Instantiate the storyboard that contains the view controller you want to go to (i.e. destination view controller).
                     let storyboard = UIStoryboard(name: Constants.storyboardIdentifier, bundle: nil)
+
+                    // Instantiate the destination view controller (in our case it's a navigation controller) from the storyboard.
                     let viewController = storyboard.instantiateViewController(withIdentifier: Constants.loginNavigationControllerIdentifier)
+
+                    // Programmatically set the current displayed view controller.
                     self?.window?.rootViewController = viewController
                 }
             case .failure(let error):
@@ -59,6 +74,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
+        // The scene may re-connect later, as its session was not necessarily discarded (see application:didDiscardSceneSessions instead).
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
