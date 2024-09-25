@@ -20,8 +20,7 @@ struct User: ParseUser {
     var updatedAt: Date?
     var ACL: ParseACL?
     var originalData: Data?
-    var lastPostedDate: Date?
-    
+
     // These are required by `ParseUser`.
     var username: String?
     var email: String?
@@ -32,5 +31,5 @@ struct User: ParseUser {
     // Your custom properties.
 
     // TODO: Pt 2 - Add custom property for `lastPostedDate`
-
+    var lastPostedDate: Date?
 }

@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import ParseSwift
 
 class PostCell: UITableViewCell {
 
@@ -26,7 +27,29 @@ class PostCell: UITableViewCell {
 
         // Username
         if let user = post.user {
-            usernameLabel.text = user.username
+            print("Post user objectId: \(user.objectId ?? "nil")")
+            print("Post user username: \(user.username ?? "nil")")
+            
+            // Attempt to fetch the user
+            user.fetch { [weak self] result in
+                switch result {
+                case .success(let fetchedUser):
+                    print("Fetched user objectId: \(fetchedUser.objectId ?? "nil")")
+                    print("Fetched user username: \(fetchedUser.username ?? "nil")")
+                    DispatchQueue.main.async {
+                        self?.usernameLabel.text = fetchedUser.username
+                    }
+                case .failure(let error):
+                    print("❌ Error fetching user: \(error.localizedDescription)")
+                    // Fallback to the cached username
+                    DispatchQueue.main.async {
+                        self?.usernameLabel.text = user.username ?? "Unknown User"
+                    }
+                }
+            }
+        } else {
+            print("No user associated with this post")
+            usernameLabel.text = "Unknown User"
         }
 
         // Image
@@ -55,7 +78,7 @@ class PostCell: UITableViewCell {
         }
 
         // TODO: Pt 2 - Show/hide blur view
-        // A lot of the following returns optional values so we'll unwrap them all together in one big `if let`
+
         // Get the current user.
         if let currentUser = User.current,
 
@@ -75,8 +98,6 @@ class PostCell: UITableViewCell {
             // Default to blur if we can't get or compute the date's above for some reason.
             blurView.isHidden = false
         }
-
-
     }
 
     override func prepareForReuse() {
