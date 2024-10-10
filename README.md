@@ -1,4 +1,4 @@
-# ios102-Project 3-Fall24
+![COP5930-005Project3-ezgif com-optimize (1)](https://github.com/user-attachments/assets/0600fed5-a0a7-42ab-92f3-0cb9809c78e4)# ios102-Project 3-Fall24
 
 ## Overview
 This app allows users to take photos using the back camera or select photos from their photo album and upload them to the server. Users are only able to view others’ photos after uploading their own. The app fetches and displays the 10 most recent posts within the last 24 hours, and includes post metadata like time, location, and comments.
@@ -21,4 +21,4 @@ This app allows users to take photos using the back camera or select photos from
 * Handling notifications in iOS for daily reminders.
 
 
-![COP5930-005Project3-ezgif com-optimize](https://github.com/user-attachments/assets/c3e604bd-2e29-4314-b0aa-e4f47e9657b5)
+![COP5930-005Project3-ezgif com-optimize (1)](https://github.com/user-attachments/assets/fdd476f0-9fe7-440d-a79a-c0c35b919e40)
